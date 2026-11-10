@@ -7,7 +7,7 @@ const PrefsContext = createContext(null);
 
 export function PrefsProvider({ children }) {
   const [lang, setLangState] = useState("es");
-  const [theme, setThemeState] = useState("light");
+  const [theme, setThemeState] = useState("dark");
 
   // Lee preferencias guardadas (o las del sistema) al montar
   useEffect(() => {
@@ -15,7 +15,7 @@ export function PrefsProvider({ children }) {
     const initialLang = savedLang || (navigator.language?.startsWith("en") ? "en" : "es");
     setLangState(initialLang);
     document.documentElement.lang = initialLang;
-    setThemeState(document.documentElement.dataset.theme || "light");
+    setThemeState(document.documentElement.dataset.theme || "dark");
   }, []);
 
   const setLang = useCallback((l) => {

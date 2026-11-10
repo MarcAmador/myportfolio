@@ -1,64 +1,97 @@
 @import "tailwindcss";
+@plugin "daisyui" {
+  themes: dark --default, light;
+}
 
 /* ─────────────────────────────────────────────────────────────
-   SISTEMA DE DISEÑO — Inspirado en Swiss Technical & Midudev
-   Paleta sobria, tipografía técnica y moderna, espaciado
-   generoso, sombras suaves de 1px y ningún adorno pesado.
+   SISTEMA DE DISEÑO — "El Estudio"
+   Inspirado en la fluidez de macOS, Linear y Raycast.
+   Vidrio esmerilado, profundidad sutil, colores de acento vivos
+   (azul hielo, ámbar cálido, violeta y menta), y física fluida.
    ───────────────────────────────────────────────────────────── */
 
 :root,
 [data-theme="dark"] {
-  --bg: #090d12;
-  --surface: #11161d;
-  --surface-hover: #161c24;
-  --surface-card: #0f141b;
-  --border: #222933;
-  --border-strong: #303947;
-  --text: #f0f4f8;
-  --text-muted: #8b96a5;
-  --text-subtle: #586373;
-  --accent: #10b981;
-  --accent-soft: rgba(16, 185, 129, 0.12);
-  --accent-fg: #052e16;
-  --nav-bg: rgba(9, 13, 18, 0.78);
-  --shadow-card: 0 4px 20px -2px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border);
+  --bg-base: #090d16;
+  --bg-surface: #0f1422;
+  --bg-surface-elevated: #161d2e;
+  --bg-glass: rgba(15, 20, 34, 0.78);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.16);
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-mint: #34d399;
+  --accent-amber: #fbbf24;
+  --accent-purple: #a78bfa;
+  --accent-rose: #fb7185;
+  --glow-cyan: rgba(56, 189, 248, 0.15);
+  --glow-ambient: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.10) 0%, transparent 60%);
+  --nav-bg: rgba(9, 13, 22, 0.82);
+
+  /* Aliases para compatibilidad */
+  --bg: var(--bg-base);
+  --surface: var(--bg-surface);
+  --surface-hover: var(--bg-surface-elevated);
+  --surface-card: var(--bg-surface);
+  --border: var(--border-subtle);
+  --text: var(--text-main);
+  --text-subtle: var(--text-dim);
+  --accent: var(--accent-cyan);
+  --accent-soft: rgba(56, 189, 248, 0.12);
+  --accent-fg: #0a0d14;
+  --shadow-card: 0 8px 32px -4px rgba(0, 0, 0, 0.5), 0 0 0 1px var(--border-subtle);
+
   color-scheme: dark;
 }
 
 [data-theme="light"] {
-  --bg: #f8fafc;
-  --surface: #ffffff;
-  --surface-hover: #f1f5f9;
-  --surface-card: #ffffff;
-  --border: #e2e8f0;
-  --border-strong: #cbd5e1;
-  --text: #0f172a;
-  --text-muted: #64748b;
-  --text-subtle: #94a3b8;
-  --accent: #059669;
-  --accent-soft: rgba(5, 150, 105, 0.1);
+  --bg-base: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-surface-elevated: #f1f5f9;
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --border-subtle: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --accent-cyan: #0284c7;
+  --accent-mint: #059669;
+  --accent-amber: #d97706;
+  --accent-purple: #7c3aed;
+  --accent-rose: #e11d48;
+  --glow-cyan: rgba(2, 132, 199, 0.08);
+  --glow-ambient: radial-gradient(circle at 50% 0%, rgba(2, 132, 199, 0.05) 0%, transparent 60%);
+  --nav-bg: rgba(248, 250, 252, 0.85);
+
+  /* Aliases para compatibilidad */
+  --bg: var(--bg-base);
+  --surface: var(--bg-surface);
+  --surface-hover: var(--bg-surface-elevated);
+  --surface-card: var(--bg-surface);
+  --border: var(--border-subtle);
+  --text: var(--text-main);
+  --text-subtle: var(--text-dim);
+  --accent: var(--accent-cyan);
+  --accent-soft: rgba(2, 132, 199, 0.1);
   --accent-fg: #ffffff;
-  --nav-bg: rgba(248, 250, 252, 0.82);
-  --shadow-card: 0 4px 24px -2px rgba(15, 23, 42, 0.06), 0 0 0 1px var(--border);
+  --shadow-card: 0 8px 28px -4px rgba(15, 23, 42, 0.06), 0 0 0 1px var(--border-subtle);
+
   color-scheme: light;
 }
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-surface-card: var(--surface-card);
-  --color-border: var(--border);
-  --color-border-strong: var(--border-strong);
-  --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
-  --color-text-subtle: var(--text-subtle);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-accent-fg: var(--accent-fg);
   --font-display: "Instrument Serif", Georgia, serif;
   --font-sans: "Hanken Grotesk Variable", system-ui, -apple-system, sans-serif;
   --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-muted: var(--text-muted);
+  --color-accent: var(--accent);
 }
 
 * {
@@ -67,186 +100,80 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 96px;
 }
 
 body {
   margin: 0;
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--bg-base);
+  background-image: var(--glow-ambient);
+  background-repeat: no-repeat;
+  color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 15px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
 }
 
 ::selection {
-  background: var(--accent);
-  color: var(--accent-fg);
+  background: var(--accent-cyan);
+  color: #0f172a;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* ── Efecto de Cristal Esmerilado (Glassmorphism macOS) ── */
+.glass-panel {
+  background: var(--bg-glass);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.25);
 }
 
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+.glass-panel-elevated {
+  background: var(--bg-surface-elevated);
+  border: 1px solid var(--border-strong);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.4);
 }
 
-/* ── Tipografía técnica y display ── */
-.font-display {
+/* ── Brillos interactivos al pasar el cursor ── */
+.hover-glow {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-glow:hover {
+  transform: translateY(-2px);
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 30px -8px var(--glow-cyan);
+}
+
+/* ── Scrollbars finos estilo macOS ── */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-dim);
+}
+
+/* ── Tipografía estilizada ── */
+.display-title {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
 }
 
-.font-mono {
+.mono-tag {
   font-family: var(--font-mono);
-}
-
-.section-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 8px;
-}
-
-/* ── Tarjetas y bordes ── */
-.card-swiss {
-  background: var(--surface-card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow-card);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card-swiss:hover {
-  border-color: var(--border-strong);
-}
-
-/* ── Botones ── */
-.btn-swiss {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 8px 16px;
-  border-radius: 9px;
-  border: 1px solid var(--border-strong);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.1s;
-}
-
-.btn-swiss:hover {
-  background: var(--surface-hover);
-  border-color: var(--accent);
-  color: var(--text);
-}
-
-.btn-swiss:active {
-  transform: translateY(1px);
-}
-
-.btn-swiss-primary {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--accent-fg);
-  font-weight: 600;
-}
-
-.btn-swiss-primary:hover {
-  background: var(--accent);
-  opacity: 0.9;
-  border-color: var(--accent);
-  color: var(--accent-fg);
-}
-
-.btn-swiss-sm {
-  padding: 5px 12px;
-  font-size: 12.5px;
-  border-radius: 7px;
-}
-
-/* ── Chips y Tags ── */
-.tag-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 10px;
-  border-radius: 9999px;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  background: var(--surface-hover);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
-/* ── Inputs ── */
-.input-swiss {
-  width: 100%;
-  padding: 10px 14px;
-  border-radius: 9px;
-  border: 1px solid var(--border);
-  background: var(--surface);
-  color: var(--text);
-  font-family: var(--font-sans);
-  font-size: 14px;
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-.input-swiss:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-soft);
-}
-
-.input-swiss::placeholder {
-  color: var(--text-subtle);
-}
-
-/* ── Terminal y Phone Mockup ── */
-.term-box {
-  background: #090c10;
-  border: 1px solid #1c222b;
-  border-radius: 12px;
-  color: #c9d1d9;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.phone-mockup {
-  width: 270px;
-  height: 520px;
-  padding: 10px;
-  border-radius: 40px;
-  border: 2px solid var(--border-strong);
-  background: #0a0d12;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6);
-}
-
-.phone-screen {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border-radius: 30px;
-  overflow: hidden;
-  background: #f7f9fa;
-  color: #111827;
-  display: flex;
-  flex-direction: column;
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 
 @media print {

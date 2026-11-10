@@ -7,44 +7,43 @@
  */
 
 export const profile = {
-  name: "Alex Rivera",
-  handle: "alexrivera",
-  email: "hola@alexrivera.dev",
-  location: { es: "Ciudad de México · remoto", en: "Mexico City · remote" },
-  photo: "/avatar.jpg", // reemplázala por tu foto en /public
+  name: "Marc Amador",
+  handle: "marcamador",
+  email: "contacto@marcamador.dev",
+  location: { es: "Remoto · Disponible a nivel global", en: "Remote · Worldwide" },
+  photo: "/avatar.jpg",
   role: {
-    es: "Desarrollador full stack",
-    en: "Full stack developer",
+    es: "Ingeniero de Software y Creador Digital",
+    en: "Software Engineer & Product Builder",
   },
   tagline: {
-    es: "Construyo cosas para la web, el escritorio y el bolsillo.",
-    en: "I build things for the web, the desktop and your pocket.",
+    es: "Diseño y construyo experiencias web de alto rendimiento, arquitecturas en Java y aplicaciones móviles.",
+    en: "I design and build high-performance web applications, Java architectures, and mobile apps.",
   },
   availability: {
-    es: "Disponible para proyectos",
-    en: "Open to new projects",
+    es: "Disponible para proyectos y retos técnicos",
+    en: "Available for new projects & challenges",
   },
   bio: {
     es: [
-      "Soy desarrollador de software con 4 años de experiencia creando productos digitales: aplicaciones web con React y Node, herramientas en Java y apps Android nativas con Kotlin.",
-      "Me importa el detalle: que una interfaz se sienta bien al tocarla, que el código se pueda leer dentro de seis meses y que lo que entrego resuelva un problema real.",
-      "Cuando no estoy programando probablemente estoy imprimiendo en riso, rodando en bici o intentando que mi gato deje de pisar el teclado.",
+      "Desarrollador enfocado en crear software que no solo funcione a la perfección, sino que se sienta ágil, intuitivo y estéticamente cuidado.",
+      "Mi especialidad abarca desde interfaces dinámicas con React y Next.js hasta servicios empresariales con Java y Spring Boot, pasando por aplicaciones nativas en Android.",
+      "Creo firmemente en la arquitectura limpia, las pruebas automatizadas y en escribir código legible que perdure en el tiempo.",
     ],
     en: [
-      "I'm a software developer with 4 years of experience shipping digital products: React and Node web apps, Java tools and native Android apps in Kotlin.",
-      "I care about details: an interface should feel good to touch, code should be readable six months from now, and what I ship should solve a real problem.",
-      "When I'm not coding I'm probably risograph printing, cycling, or trying to keep my cat off the keyboard.",
+      "Software developer focused on building systems that don't just work flawlessly, but feel responsive, tactile, and thoughtfully crafted.",
+      "My core strengths range from dynamic React & Next.js interfaces to enterprise-grade Java/Spring backends and native Android applications.",
+      "I believe in clean architecture, automated testing, and writing clear, maintainable code built to last.",
     ],
   },
   facts: [
-    { k: { es: "Años programando", en: "Years coding" }, v: "6" },
-    { k: { es: "Proyectos publicados", en: "Shipped projects" }, v: "24" },
-    { k: { es: "Café por día", en: "Coffees a day" }, v: "3" },
+    { k: { es: "Años creando software", en: "Years building software" }, v: "4+" },
+    { k: { es: "Proyectos y arquitecturas", en: "Shipped architectures" }, v: "15+" },
+    { k: { es: "Demos interactivas", en: "Live interactive demos" }, v: "3" },
   ],
   socials: [
-    { label: "GitHub", url: "https://github.com/" },
-    { label: "LinkedIn", url: "https://linkedin.com/" },
-    { label: "Instagram", url: "https://instagram.com/" },
+    { label: "GitHub", url: "https://github.com/MarcAmador" },
+    { label: "LinkedIn", url: "https://linkedin.com/in/marcamador" },
   ],
 };
 

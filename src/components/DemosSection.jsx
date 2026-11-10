@@ -1,15 +1,15 @@
 "use client";
 
-import { GithubIcon, LinkedinIcon } from "@/components/Icons";
-
 import { useState } from "react";
-import { Terminal, Smartphone, Download, Info } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Terminal, Smartphone, Code2, Sparkles, Cpu, ExternalLink } from "lucide-react";
 import { usePrefs } from "@/context/PrefsContext";
 import JavaTerminal from "@/components/demos/JavaTerminal";
 import AndroidPhone from "@/components/demos/AndroidPhone";
+import WebLab from "@/components/demos/WebLab";
 
 export default function DemosSection({ selectedTab, onTabChange }) {
-  const { lang, ui } = usePrefs();
+  const { lang } = usePrefs();
   const [internalTab, setInternalTab] = useState("java");
 
   const currentTab = selectedTab || internalTab;
@@ -18,129 +18,185 @@ export default function DemosSection({ selectedTab, onTabChange }) {
     if (onTabChange) onTabChange(t);
   };
 
+  const tabs = [
+    {
+      id: "java",
+      title: "Java 21 — Motor de Préstamos",
+      subtitle: "Terminal interactiva y arquitectura en capas",
+      icon: Terminal,
+      color: "text-amber-400",
+      pillColor: "border-amber-500/30 bg-amber-500/10 text-amber-400",
+    },
+    {
+      id: "android",
+      title: "Android — Simulador HabitNest",
+      subtitle: "App nativa con Kotlin y Jetpack Compose",
+      icon: Smartphone,
+      color: "text-purple-400",
+      pillColor: "border-purple-500/30 bg-purple-500/10 text-purple-400",
+    },
+    {
+      id: "web",
+      title: "React 19 — Telemetría Web",
+      subtitle: "Estado reactivo y caché en el Edge",
+      icon: Code2,
+      color: "text-sky-400",
+      pillColor: "border-sky-500/30 bg-sky-500/10 text-sky-400",
+    },
+  ];
+
   return (
-    <section id="demos" className="py-20 px-4 sm:px-6 max-w-5xl mx-auto border-t border-border">
+    <section id="demos" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)]">
       {/* Header */}
-      <div className="mb-10">
-        <span className="section-label">02 // DEMOS INTERACTIVAS</span>
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-text mb-3">
-          {lang === "es" ? "Software que puedes probar aquí" : "Interactive Software Demos"}
+      <div className="mb-12">
+        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-[var(--accent-amber)] uppercase tracking-wider">
+          <Cpu size={14} />
+          <span>Software en Ejecución</span>
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
+          {lang === "es" ? "Laboratorio Interactivo" : "Interactive Software Lab"}
         </h2>
-        <p className="text-text-muted max-w-2xl text-base">
+        <p className="text-[var(--text-muted)] max-w-2xl text-base leading-relaxed">
           {lang === "es"
-            ? "Explora réplicas interactivas y código real de aplicaciones construidas en Java y Android sin salir del navegador."
-            : "Test-drive interactive replicas and view real production code for Java and Android applications right in your browser."}
+            ? "Interactúa con software real ejecutándose en vivo en tu navegador: terminal de consola en Java 21, réplica funcional de una app nativa Android y simulador de telemetría en React 19."
+            : "Interact with functional software directly in your browser: a Java 21 terminal with clean service layers, a native Android habit tracker, and a real-time React 19 telemetry sandbox."}
         </p>
 
-        {/* Demo Switcher Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mt-6">
-          <button
-            onClick={() => setTab("java")}
-            aria-pressed={currentTab === "java"}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-              currentTab === "java"
-                ? "bg-surface border border-accent text-text shadow-sm"
-                : "bg-surface/50 border border-border text-text-muted hover:text-text"
-            }`}
-          >
-            <Terminal size={16} className={currentTab === "java" ? "text-accent" : "text-text-subtle"} />
-            <span>Biblioteca Central (Java 21)</span>
-          </button>
-          <button
-            onClick={() => setTab("android")}
-            aria-pressed={currentTab === "android"}
-            className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all ${
-              currentTab === "android"
-                ? "bg-surface border border-accent text-text shadow-sm"
-                : "bg-surface/50 border border-border text-text-muted hover:text-text"
-            }`}
-          >
-            <Smartphone size={16} className={currentTab === "android" ? "text-accent" : "text-text-subtle"} />
-            <span>HabitNest (Android & Kotlin)</span>
-          </button>
+        {/* Studio Environment Switcher with Framer Motion slide */}
+        <div className="flex flex-wrap items-center gap-2 mt-8 p-1.5 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border-subtle)] w-fit">
+          {tabs.map((tab) => {
+            const isActive = currentTab === tab.id;
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setTab(tab.id)}
+                className={`relative px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium flex items-center gap-2 transition-all cursor-pointer ${
+                  isActive ? "text-[var(--text-main)] font-semibold" : "text-[var(--text-muted)] hover:text-[var(--text-main)]"
+                }`}
+              >
+                {isActive && (
+                  <motion.div
+                    layoutId="activeDemoTab"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                    className="absolute inset-0 rounded-xl bg-[var(--bg-surface-elevated)] border border-[var(--border-strong)] shadow-sm -z-10"
+                  />
+                )}
+                <Icon size={16} className={tab.color} />
+                <span>{tab.title}</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Demo Showcase Container */}
-      <div className="rounded-2xl border border-border bg-surface shadow-sm p-5 sm:p-8 bg-surface">
-        {currentTab === "java" && (
-          <div>
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-border">
-              <div>
-                <h3 className="text-xl font-bold text-text">Biblioteca Central</h3>
-                <p className="text-xs font-mono text-text-muted mt-0.5">
-                  Java 21 · Arquitectura por capas · SQLite · Pruebas JUnit 5
-                </p>
+      {/* Demo Viewport */}
+      <div className="rounded-2xl glass-panel-elevated border border-[var(--border-strong)] p-6 sm:p-8 shadow-2xl">
+        <AnimatePresence mode="wait">
+          {currentTab === "java" && (
+            <motion.div
+              key="java"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-[var(--border-subtle)]">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-xl font-bold text-[var(--text-main)]">
+                      Biblioteca Central — Motor de Préstamos
+                    </h3>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                      Java 21
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+                    {lang === "es"
+                      ? "Arquitectura limpia por capas (Modelo, Repositorio, Servicio) con cálculo de multas y persistencia."
+                      : "Clean layered architecture (Model, Repository, Service) with automatic fines and persistence."}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-xs text-[var(--text-dim)]">
+                  <span>SQLite • JUnit 5 • SOLID</span>
+                </div>
               </div>
-              <div className="flex items-center gap-2">
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface border border-border text-text-muted hover:text-text hover:border-border-strong transition-all"
-                >
-                  <GithubIcon size={13} />
-                  <span>{lang === "es" ? "Ver repositorio" : "View repo"}</span>
-                </a>
+
+              <JavaTerminal />
+            </motion.div>
+          )}
+
+          {currentTab === "android" && (
+            <motion.div
+              key="android"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-[var(--border-subtle)]">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-xl font-bold text-[var(--text-main)]">
+                      HabitNest — Gestor de Hábitos
+                    </h3>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-purple-500/15 text-purple-400 border border-purple-500/30">
+                      Android Nativo • Kotlin
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+                    {lang === "es"
+                      ? "Simulación interactiva de la interfaz en Jetpack Compose, con rachas diarias y almacenamiento en Room."
+                      : "Interactive Jetpack Compose replica with streak counters, progress ring, and Room local persistence."}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-xs text-[var(--text-dim)]">
+                  <span>MVVM • Hilt • Room DB</span>
+                </div>
               </div>
-            </div>
 
-            <div className="mb-6 p-3 rounded-lg bg-surface-hover border border-border text-xs text-text-muted flex items-start gap-2.5">
-              <Info size={16} className="text-accent flex-none mt-0.5" />
-              <span>
-                {lang === "es"
-                  ? "Esta terminal reproduce la lógica y comandos del programa Java real. Puedes teclear comandos como 'listar', 'prestar 2 Ana' o cambiar a la pestaña 'LoanService.java' para inspeccionar el código fuente."
-                  : "This terminal mirrors the logic and output of the actual Java application. You can type commands like 'list', 'loan 2 Ana' or inspect the real 'LoanService.java' source code."}
-              </span>
-            </div>
-
-            <JavaTerminal />
-          </div>
-        )}
-
-        {currentTab === "android" && (
-          <div>
-            <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-border">
-              <div>
-                <h3 className="text-xl font-bold text-text">HabitNest</h3>
-                <p className="text-xs font-mono text-text-muted mt-0.5">
-                  Kotlin · Jetpack Compose · Room Database · MVVM Architecture
-                </p>
+              <div className="flex justify-center py-4">
+                <AndroidPhone />
               </div>
-              <div className="flex items-center gap-2">
-                <a
-                  href="https://example.com/habitnest.apk"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-accent text-accent-fg shadow-sm hover:opacity-90 transition-all"
-                >
-                  <Download size={13} />
-                  <span>{lang === "es" ? "Descargar APK" : "Download APK"}</span>
-                </a>
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-surface border border-border text-text-muted hover:text-text hover:border-border-strong transition-all"
-                >
-                  <GithubIcon size={13} />
-                  <span>{lang === "es" ? "Código" : "Code"}</span>
-                </a>
+            </motion.div>
+          )}
+
+          {currentTab === "web" && (
+            <motion.div
+              key="web"
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -12 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="flex flex-wrap items-center justify-between gap-4 pb-6 mb-6 border-b border-[var(--border-subtle)]">
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-xl font-bold text-[var(--text-main)]">
+                      Telemetría y Estado Reactivo
+                    </h3>
+                    <span className="px-2 py-0.5 rounded-full text-[10px] font-mono bg-sky-500/15 text-sky-400 border border-sky-500/30">
+                      React 19 • Next.js
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-[var(--text-muted)]">
+                    {lang === "es"
+                      ? "Prueba en vivo la re-validación de caché, transiciones asíncronas con useTransition y filtrado en milisegundos."
+                      : "Live testing of cache revalidation, asynchronous transitions with useTransition, and sub-millisecond filtering."}
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-2 font-mono text-xs text-[var(--text-dim)]">
+                  <span>Server Actions • Edge Cache • App Router</span>
+                </div>
               </div>
-            </div>
 
-            <div className="mb-6 p-3 rounded-lg bg-surface-hover border border-border text-xs text-text-muted flex items-start gap-2.5">
-              <Info size={16} className="text-accent flex-none mt-0.5" />
-              <span>
-                {lang === "es"
-                  ? "Emulador visual interactivo de la app nativa en Android. Puedes marcar hábitos como completados para ver cómo se actualiza el anillo de progreso y la racha en tiempo real."
-                  : "Interactive visual emulator of the native Android application. Toggle habits to see the live progress ring and streak updates in real time."}
-              </span>
-            </div>
-
-            <AndroidPhone />
-          </div>
-        )}
+              <WebLab />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

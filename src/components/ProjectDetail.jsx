@@ -56,50 +56,57 @@ export default function ProjectDetail({ slug }) {
 
       {/* Main Container */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
-        <span className="section-label mb-2">
-          {t(KINDS[p.kind])} // {p.year}
-        </span>
-        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight text-text mb-4">
+        <div className="flex items-center gap-2 mb-3">
+          <span className="px-2.5 py-0.5 rounded-full text-xs font-mono font-bold bg-[var(--accent-cyan)]/15 text-[var(--accent-cyan)] border border-[var(--accent-cyan)]/30">
+            {t(KINDS[p.kind])}
+          </span>
+          <span className="text-xs font-mono text-[var(--text-dim)]">•</span>
+          <span className="text-xs font-mono text-[var(--text-dim)]">{p.year}</span>
+        </div>
+
+        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
           {p.title}
         </h1>
 
-        <p className="text-base sm:text-lg text-text-muted leading-relaxed mb-8 max-w-2xl">
+        <p className="text-base sm:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-2xl">
           {t(p.summary)}
         </p>
 
         {/* Cover with window frame */}
-        <div className="card-swiss overflow-hidden mb-10">
-          <div className="px-4 py-2.5 bg-surface border-b border-border flex items-center gap-2 font-mono text-xs text-text-subtle">
-            <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
-            <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
-            <span className="w-2.5 h-2.5 rounded-full bg-border-strong inline-block" />
-            <span className="ml-2 text-text-muted text-[11px]">preview://{p.slug}.dev</span>
+        <div className="rounded-2xl glass-panel-elevated overflow-hidden mb-10 border border-[var(--border-strong)] shadow-2xl">
+          <div className="px-4 py-3 bg-[var(--bg-surface)] border-b border-[var(--border-subtle)] flex items-center justify-between font-mono text-xs text-[var(--text-dim)]">
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full bg-[#ef4444]" />
+              <span className="w-3 h-3 rounded-full bg-[#f59e0b]" />
+              <span className="w-3 h-3 rounded-full bg-[#10b981]" />
+              <span className="ml-2 text-[var(--text-muted)] text-[11px]">{p.slug}.release</span>
+            </div>
           </div>
-          <div className="aspect-[16/7] bg-surface-hover">
+          <div className="aspect-[16/7] bg-[var(--bg-base)]">
             <Cover slug={p.slug} className="w-full h-full object-cover" />
           </div>
         </div>
 
         {/* Description & Specs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 pb-12 border-b border-border">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 pb-12 border-b border-[var(--border-subtle)]">
           <div className="md:col-span-2 space-y-6">
             <div>
-              <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-text-subtle mb-3">
-                {lang === "es" ? "ARQUITECTURA Y DETALLES" : "ARCHITECTURE & DETAILS"}
+              <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-dim)] mb-3">
+                {lang === "es" ? "Arquitectura y Detalles Técnicos" : "Architecture & Details"}
               </h2>
-              <p className="text-sm sm:text-base text-text-muted leading-relaxed">
+              <p className="text-sm sm:text-base text-[var(--text-muted)] leading-relaxed">
                 {t(p.description)}
               </p>
             </div>
 
             <div>
-              <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-text-subtle mb-3">
-                {lang === "es" ? "LOGROS Y MÉTRICAS" : "HIGHLIGHTS & METRICS"}
+              <h2 className="text-xs font-mono font-semibold uppercase tracking-wider text-[var(--text-dim)] mb-3">
+                {lang === "es" ? "Logros y Resultados Clave" : "Key Highlights & Outcomes"}
               </h2>
-              <ul className="space-y-2 text-sm text-text-muted">
+              <ul className="space-y-2 text-sm text-[var(--text-muted)]">
                 {t(p.highlights).map((h, i) => (
                   <li key={i} className="flex items-start gap-2.5">
-                    <span className="text-accent font-bold mt-0.5">✓</span>
+                    <span className="text-[var(--accent-cyan)] font-bold mt-0.5">•</span>
                     <span>{h}</span>
                   </li>
                 ))}
