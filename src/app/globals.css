@@ -1,0 +1,435 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────
+   SISTEMA DE DISEÑO — "Papel & Tinta"
+   Un escritorio impreso en riso: papel crema, tinta
+   casi negra y tres tintas planas (naranja, cobalto,
+   verde). Sin degradados, sin brillos, sin neón.
+   ─────────────────────────────────────────────── */
+
+:root,
+[data-theme="light"] {
+  --paper: #f1e8d2;
+  --paper-2: #f9f4e6;
+  --paper-3: #e5dac0;
+  --ink: #1a1814;
+  --ink-soft: #5c5547;
+  --shadow: #1a1814;
+  --orange: #f25c1f;
+  --blue: #2330c4;
+  --green: #1f8a5b;
+  --yellow: #f0b429;
+  --pink: #f3a6c0;
+  --on-blue: #f9f4e6;
+  --on-green: #f9f4e6;
+  --grain-opacity: 0.35;
+  --grain-blend: multiply;
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --paper: #16140e;
+  --paper-2: #211e16;
+  --paper-3: #2c2819;
+  --ink: #f1e8d2;
+  --ink-soft: #aaa088;
+  --shadow: #6b6452;
+  --orange: #ff7236;
+  --blue: #6f9bff;
+  --green: #3fcb8b;
+  --yellow: #ffc93d;
+  --pink: #f3a6c0;
+  --on-blue: #16140e;
+  --on-green: #16140e;
+  --grain-opacity: 0.12;
+  --grain-blend: screen;
+  --shape-blend: normal;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-orange: var(--orange);
+  --color-blue: var(--blue);
+  --color-green: var(--green);
+  --color-yellow: var(--yellow);
+  --color-pink: var(--pink);
+  --font-display: "Instrument Serif", "Times New Roman", serif;
+  --font-sans: "Hanken Grotesk Variable", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--orange);
+  color: #1a1814;
+}
+
+/* Grano de papel: textura global sobre todo */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  mix-blend-mode: var(--grain-blend);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .1  0 0 0 0 .09  0 0 0 0 .07  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 2px;
+}
+
+/* ── Tipografía ── */
+.display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.95;
+}
+.mono {
+  font-family: var(--font-mono);
+}
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ── Barra de menú ── */
+.menubar {
+  height: 34px;
+  background: var(--paper-2);
+  border-bottom: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* ── Ventanas ── */
+.win {
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+  box-shadow: 7px 7px 0 var(--shadow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+.win[data-focused="false"] {
+  box-shadow: 3px 3px 0 var(--shadow);
+}
+.win-title {
+  height: 36px;
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+  border-bottom: 2px solid var(--ink);
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+  /* rayas finas, guiño al Mac clásico */
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 3px,
+    color-mix(in srgb, var(--ink) 22%, transparent) 3px 4px
+  );
+}
+.win-title:active {
+  cursor: grabbing;
+}
+.win-title .name {
+  background: var(--tint, var(--paper-2));
+  color: var(--tint-ink, var(--ink));
+  padding: 1px 10px;
+  border: 2px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.win-btn {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  color: var(--ink);
+  padding: 0;
+  transition: background 0.12s;
+}
+.win-btn:hover {
+  background: var(--yellow);
+}
+.win-btn[data-kind="close"]:hover {
+  background: var(--orange);
+}
+.win-btn svg {
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+.win-btn:hover svg,
+.win-btn:focus-visible svg {
+  opacity: 1;
+}
+.win-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink) transparent;
+}
+
+/* ── Botones, chips, paneles ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--shadow);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+}
+.btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--shadow);
+  background: var(--yellow);
+  color: #1a1814;
+}
+.btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--shadow);
+}
+.btn-primary {
+  background: var(--orange);
+  color: #1a1814;
+}
+.btn-primary:hover {
+  background: var(--ink);
+  color: var(--paper-2);
+}
+.btn-sm {
+  padding: 4px 10px;
+  font-size: 11px;
+  box-shadow: 2px 2px 0 var(--shadow);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border: 1.5px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  background: transparent;
+  color: var(--ink);
+  cursor: default;
+}
+button.chip {
+  cursor: pointer;
+  transition: background 0.12s;
+}
+button.chip:hover {
+  background: var(--paper-3);
+}
+button.chip[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--paper-2);
+}
+
+.panel {
+  border: 2px solid var(--ink);
+  background: var(--paper-2);
+}
+.sunken {
+  background: var(--paper-3);
+  border: 2px solid var(--ink);
+}
+
+.input {
+  width: 100%;
+  background: var(--paper-2);
+  color: var(--ink);
+  border: 2px solid var(--ink);
+  padding: 9px 12px;
+  font: inherit;
+  border-radius: 0;
+  transition: box-shadow 0.12s, background 0.12s;
+}
+.input:focus {
+  outline: none;
+  box-shadow: 3px 3px 0 var(--blue);
+  background: var(--paper);
+}
+.input::placeholder {
+  color: var(--ink-soft);
+  opacity: 0.7;
+}
+
+/* ── Escritorio ── */
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 92px;
+  padding: 6px 4px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+.desktop-icon .tile {
+  transition: transform 0.15s;
+}
+.desktop-icon:hover .tile {
+  transform: translate(-2px, -2px) rotate(-3deg);
+}
+.desktop-icon span.cap {
+  padding: 1px 6px;
+  background: var(--paper-2);
+  border: 1.5px solid var(--ink);
+}
+.desktop-icon:focus-visible span.cap,
+.desktop-icon:hover span.cap {
+  background: var(--ink);
+  color: var(--paper-2);
+}
+
+.tile {
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--shadow);
+  color: #1a1814;
+}
+
+.dock {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 8px 12px;
+  background: var(--paper-2);
+  border: 2px solid var(--ink);
+  box-shadow: 5px 5px 0 var(--shadow);
+}
+
+/* Marquesina */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+.blink {
+  animation: blink 1s steps(1) infinite;
+}
+
+/* ── Demo: terminal ── */
+.term {
+  background: #14120d;
+  color: #f1e8d2;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+/* Marco de teléfono */
+.phone {
+  width: 252px;
+  height: 470px;
+  border: 3px solid var(--ink);
+  border-radius: 34px;
+  padding: 9px;
+  background: #14120d;
+  box-shadow: 6px 6px 0 var(--shadow);
+}
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  background: #f9f4e6;
+  color: #1a1814;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Impresión (CV) */
+@media print {
+  body::after {
+    display: none;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
