@@ -1,6 +1,6 @@
 "use client";
 
-import { Send, CheckCircle2, AlertTriangle } from "lucide-react";
+import { AlertCircle, CheckCircle2, Send } from "lucide-react";
 import { useState } from "react";
 import { usePrefs } from "@/context/PrefsContext";
 import { profile } from "@/data/profile";
@@ -30,53 +30,50 @@ export default function Contact() {
   }
 
   return (
-    <div className="p-5 md:p-7">
-      <h2 className="display text-[46px] md:text-[56px]">
-        {ui("contact.title")}
-        <span className="text-orange">.</span>
-      </h2>
-      <p className="mb-6 mt-1 max-w-[46ch] text-ink-soft">{ui("contact.sub")}</p>
+    <div className="p-7 md:p-10">
+      <h2 className="display text-[34px]">{ui("contact.title")}</h2>
+      <p className="mb-7 mt-2 max-w-[44ch] text-muted">{ui("contact.sub")}</p>
 
       <form onSubmit={onSubmit} className="grid gap-4" noValidate>
         <div className="grid gap-4 sm:grid-cols-2">
-          <label className="grid gap-1.5">
-            <span className="label">{ui("contact.name")}</span>
+          <label className="grid gap-1.5 text-sm text-muted">
+            {ui("contact.name")}
             <input name="name" required autoComplete="name" className="input" />
           </label>
-          <label className="grid gap-1.5">
-            <span className="label">{ui("contact.email")}</span>
+          <label className="grid gap-1.5 text-sm text-muted">
+            {ui("contact.email")}
             <input name="email" type="email" required autoComplete="email" className="input" />
           </label>
         </div>
-        <label className="grid gap-1.5">
-          <span className="label">{ui("contact.message")}</span>
+        <label className="grid gap-1.5 text-sm text-muted">
+          {ui("contact.message")}
           <textarea name="message" required rows={5} className="input resize-y" />
         </label>
-        {/* Campo trampa anti-spam: los humanos no lo ven */}
+        {/* Campo trampa anti-spam: las personas no lo ven */}
         <input name="website" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 
         <div className="flex flex-wrap items-center gap-4">
           <button className="btn btn-primary" disabled={status === "sending"}>
-            <Send size={14} strokeWidth={2.5} /> {status === "sending" ? ui("contact.sending") : ui("contact.send")}
+            <Send size={15} strokeWidth={1.8} /> {status === "sending" ? ui("contact.sending") : ui("contact.send")}
           </button>
-          <p role="status" aria-live="polite" className="flex items-center gap-2 text-[13.5px]">
+          <p role="status" aria-live="polite" className="flex items-center gap-2 text-sm">
             {status === "ok" && (
               <>
-                <CheckCircle2 size={16} className="text-green" /> {ui("contact.ok")}
+                <CheckCircle2 size={16} className="text-accent" /> {ui("contact.ok")}
               </>
             )}
             {(status === "error" || status === "invalid") && (
               <>
-                <AlertTriangle size={16} className="text-orange" /> {ui(status === "error" ? "contact.error" : "contact.invalid")}
+                <AlertCircle size={16} className="text-muted" /> {ui(status === "error" ? "contact.error" : "contact.invalid")}
               </>
             )}
           </p>
         </div>
       </form>
 
-      <p className="mono mt-8 border-t-2 border-ink pt-4 text-[12.5px]">
+      <p className="mt-9 border-t border-line pt-5 text-sm text-muted">
         {ui("contact.direct")}{" "}
-        <a href={`mailto:${profile.email}`} className="underline decoration-orange decoration-2 underline-offset-4 hover:bg-yellow hover:text-[#1a1814]">
+        <a href={`mailto:${profile.email}`} className="text-fg underline decoration-line-strong underline-offset-4 transition-colors hover:text-accent">
           {profile.email}
         </a>
       </p>

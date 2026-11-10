@@ -22,31 +22,31 @@ export default function CvDocument() {
     : { sum: "Profile", exp: "Experience", edu: "Education", skills: "Skills", proj: "Selected projects" };
 
   return (
-    <div className="min-h-dvh bg-paper-3 py-6 print:bg-white print:py-0">
+    <div className="min-h-dvh bg-bg py-6 print:bg-white print:py-0">
       <div className="no-print mx-auto mb-4 flex max-w-[820px] flex-wrap items-center justify-between gap-3 px-4">
         <Link href="/" className="btn btn-sm">← {ui("detail.back")}</Link>
         <div className="flex items-center gap-3">
-          <div className="flex border-2 border-ink font-mono text-xs">
+          <div className="flex gap-2.5 text-sm text-muted">
             {["es", "en"].map((l) => (
-              <button key={l} onClick={() => setLang(l)} aria-pressed={lang === l} className={`px-2 py-1 uppercase ${lang === l ? "bg-ink text-paper-2" : ""}`}>
+              <button key={l} onClick={() => setLang(l)} aria-pressed={lang === l} className={`uppercase ${lang === l ? "text-fg" : "hover:text-fg"}`}>
                 {l}
               </button>
             ))}
           </div>
           <button className="btn btn-sm btn-primary" onClick={() => window.print()}>
-            <Printer size={13} strokeWidth={2.5} /> {ui("cv.download")}
+            <Printer size={14} strokeWidth={1.8} /> {ui("cv.download")}
           </button>
         </div>
       </div>
 
       {/* La hoja siempre es blanca/tinta: es un documento, no parte del tema */}
-      <article className="mx-auto max-w-[820px] border-2 border-[#1a1814] bg-white p-8 text-[13px] leading-[1.5] text-[#1a1814] shadow-[7px_7px_0_#1a1814] print:max-w-none print:border-0 print:p-0 print:shadow-none md:p-12">
-        <header className="flex items-end justify-between gap-6 border-b-2 border-[#1a1814] pb-5">
+      <article className="mx-auto max-w-[820px] rounded-xl border border-line-strong bg-white p-8 text-[13px] leading-[1.55] text-[#1d2126] shadow-[0_20px_50px_-30px_rgba(0,0,0,0.5)] print:max-w-none print:rounded-none print:border-0 print:p-0 print:shadow-none md:p-12">
+        <header className="flex items-end justify-between gap-6 border-b border-[#1d2126]/25 pb-5">
           <div>
             <h1 className="display text-[56px]">{profile.name}</h1>
-            <p className="mt-1 font-display text-[24px] text-[#f25c1f]">{t(profile.role)}</p>
+            <p className="mt-1.5 font-display text-[24px] text-[#2e6b5e]">{t(profile.role)}</p>
           </div>
-          <ul className="mono text-right text-[11.5px] leading-relaxed">
+          <ul className="text-right text-[12px] leading-relaxed">
             <li>{profile.email}</li>
             <li>{t(profile.location)}</li>
             {profile.socials.map((s) => (
@@ -85,7 +85,7 @@ export default function CvDocument() {
           <ul className="grid gap-1.5">
             {projects.slice(0, 5).map((p) => (
               <li key={p.slug}>
-                <strong>{p.title}</strong> ({p.year}) — {t(p.summary)} <span className="mono text-[11px] opacity-70">[{p.stack.slice(0, 4).join(" · ")}]</span>
+                <strong>{p.title}</strong> ({p.year}) — {t(p.summary)} <span className="text-[11.5px] opacity-60">[{p.stack.slice(0, 4).join(" · ")}]</span>
               </li>
             ))}
           </ul>
@@ -98,7 +98,7 @@ export default function CvDocument() {
 function Section({ title, children }) {
   return (
     <section className="mt-6 break-inside-avoid">
-      <h2 className="mono mb-2 border-b border-[#1a1814]/40 pb-1 text-[11.5px] font-semibold uppercase tracking-[0.14em]">{title}</h2>
+      <h2 className="mb-2 border-b border-[#1d2126]/20 pb-1 text-[12px] font-semibold uppercase tracking-[0.12em] text-[#2e6b5e]">{title}</h2>
       {children}
     </section>
   );
@@ -111,7 +111,7 @@ function Item({ e, t }) {
         <p>
           <strong>{t(e.title)}</strong> · {e.org}
         </p>
-        <span className="mono whitespace-nowrap text-[11.5px]">
+        <span className="whitespace-nowrap text-[12px] opacity-70">
           {e.period}
           {e.periodEnd ? t(e.periodEnd) : ""}
         </span>

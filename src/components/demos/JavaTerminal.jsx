@@ -12,14 +12,14 @@ const INITIAL_BOOKS = [
 
 const T = {
   es: {
-    banner: ["Biblioteca Central v2.3 — Java 21", "Escribe 'ayuda' para ver los comandos.", ""],
+    banner: ["Biblioteca Central v2.3 — Java 21", "Escribe 'ayuda' para ver los comandos disponibles.", ""],
     help: [
       "Comandos disponibles:",
-      "  listar                 muestra el catálogo",
+      "  listar                 muestra el catálogo de libros",
       "  buscar <texto>         busca por título o autor",
       "  prestar <id> <socio>   registra un préstamo",
       "  devolver <id>          registra una devolución",
-      "  agregar <título>       agrega un libro",
+      "  agregar <título>       agrega un nuevo libro",
       "  limpiar                limpia la pantalla",
     ],
     cmds: ["listar", "buscar java", "prestar 2 Ana", "devolver 3", "agregar Rayuela", "ayuda"],
@@ -37,7 +37,7 @@ const T = {
     cmdMap: { listar: "list", buscar: "search", prestar: "loan", devolver: "return", agregar: "add", limpiar: "clear", ayuda: "help" },
   },
   en: {
-    banner: ["Central Library v2.3 — Java 21", "Type 'help' to see the commands.", ""],
+    banner: ["Central Library v2.3 — Java 21", "Type 'help' to see available commands.", ""],
     help: [
       "Available commands:",
       "  list                   show the catalog",
@@ -98,21 +98,21 @@ function Highlight({ code }) {
     const parts = body.split(/(".*?")/g);
     return (
       <div key={i} className="whitespace-pre">
-        <span className="mr-4 inline-block w-5 select-none text-right opacity-35">{i + 1}</span>
+        <span className="mr-4 inline-block w-5 select-none text-right opacity-30">{i + 1}</span>
         {parts.map((p, j) =>
           p.startsWith('"') ? (
-            <span key={j} style={{ color: "#9bd0b4" }}>{p}</span>
+            <span key={j} className="text-emerald-400">{p}</span>
           ) : (
             p.split(KW).map((chunk, k) =>
               k % 2 ? (
-                <span key={k} style={{ color: "#ff8a57" }}>{chunk}</span>
+                <span key={k} className="text-sky-400 font-semibold">{chunk}</span>
               ) : (
                 <span key={k}>{chunk}</span>
               )
             )
           )
         )}
-        {comment !== undefined && <span style={{ color: "#8a8270" }}>//{comment}</span>}
+        {comment !== undefined && <span className="text-slate-500">//{comment}</span>}
       </div>
     );
   });
@@ -127,14 +127,15 @@ export default function JavaTerminal() {
   const [input, setInput] = useState("");
   const [cmdHistory, setCmdHistory] = useState([]);
   const [hIdx, setHIdx] = useState(-1);
-  const endRef = useRef(null);
+  const termContainerRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ block: "end" });
+    if (termContainerRef.current) {
+      termContainerRef.current.scrollTop = termContainerRef.current.scrollHeight;
+    }
   }, [lines, tab]);
 
-  // Si cambia el idioma, reinicia el banner
   useEffect(() => {
     setLines(T[lang].banner.map((text) => ({ text })));
   }, [lang]);
@@ -235,8 +236,9 @@ export default function JavaTerminal() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-[720px] border-2 border-ink shadow-[6px_6px_0_var(--shadow)]">
-      <div className="flex border-b-2 border-ink bg-[#2a261b] font-mono text-[11.5px] text-[#f1e8d2]">
+    <div className="mx-auto w-full max-w-[760px] overflow-hidden rounded-xl border border-border bg-[#090d12]">
+      {/* Tab Header */}
+      <div className="flex border-b border-border bg-surface font-mono text-xs text-text-muted">
         {[
           ["term", "bash — biblioteca.jar"],
           ["src", "LoanService.java"],
@@ -245,22 +247,25 @@ export default function JavaTerminal() {
             key={id}
             onClick={() => setTab(id)}
             aria-pressed={tab === id}
-            className={`border-r-2 border-ink px-4 py-2 ${tab === id ? "bg-[#14120d]" : "opacity-70 hover:opacity-100"}`}
+            className={`border-r border-border px-4 py-2.5 transition-colors ${
+              tab === id ? "bg-[#090d12] text-accent font-semibold" : "hover:text-text hover:bg-surface-hover"
+            }`}
           >
             {label}
           </button>
         ))}
       </div>
 
+      {/* Terminal View */}
       {tab === "term" ? (
-        <div className="term h-[360px] overflow-auto p-4" onClick={() => inputRef.current?.focus()}>
+        <div ref={termContainerRef} className="h-[360px] overflow-auto p-4 font-mono text-xs sm:text-[13px] text-slate-300 leading-relaxed" onClick={() => inputRef.current?.focus()}>
           {lines.map((l, i) => (
-            <div key={i} className="whitespace-pre-wrap break-words" style={l.you ? { color: "#ffc93d" } : undefined}>
+            <div key={i} className="whitespace-pre-wrap break-words" style={l.you ? { color: "#ffffff", fontWeight: 600 } : undefined}>
               {l.text || "\u00a0"}
             </div>
           ))}
-          <div className="flex items-center gap-2">
-            <span style={{ color: "#ff8a57" }}>$</span>
+          <div className="flex items-center gap-2 mt-1">
+            <span className="text-accent font-bold">$</span>
             <input
               ref={inputRef}
               value={input}
@@ -269,24 +274,28 @@ export default function JavaTerminal() {
               spellCheck={false}
               autoCapitalize="off"
               autoComplete="off"
-              aria-label="Terminal"
-              className="min-w-0 flex-1 border-0 bg-transparent p-0 text-[#f1e8d2]"
-              style={{ outline: "none" }}
+              aria-label="Terminal de comandos"
+              className="min-w-0 flex-1 border-0 bg-transparent p-0 text-text outline-none focus:outline-none"
             />
           </div>
-          <div ref={endRef} />
+          
         </div>
       ) : (
-        <div className="term h-[360px] overflow-auto p-4 text-[12px]">
+        <div ref={termContainerRef} className="h-[360px] overflow-auto p-4 font-mono text-xs sm:text-[12.5px] leading-relaxed text-slate-300">
           <Highlight code={SOURCE} />
         </div>
       )}
 
+      {/* Quick command pills */}
       {tab === "term" && (
-        <div className="flex flex-wrap items-center gap-1.5 border-t-2 border-ink bg-paper-3 px-3 py-2">
-          <span className="label mr-1">{ui("demos.java.hint")}</span>
+        <div className="flex flex-wrap items-center gap-1.5 border-t border-border bg-surface px-4 py-3">
+          <span className="mr-1 text-xs font-mono text-text-muted">{ui("demos.java.hint")}</span>
           {L.cmds.map((c) => (
-            <button key={c} className="chip bg-paper-2" onClick={() => run(c)}>
+            <button
+              key={c}
+              className="tag-pill text-xs hover:border-accent hover:text-accent cursor-pointer transition-colors"
+              onClick={() => run(c)}
+            >
               {c}
             </button>
           ))}

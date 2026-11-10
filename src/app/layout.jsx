@@ -1,7 +1,6 @@
 import "@fontsource-variable/hanken-grotesk";
 import "@fontsource-variable/jetbrains-mono";
 import "@fontsource/instrument-serif/400.css";
-import "@fontsource/instrument-serif/400-italic.css";
 import "./globals.css";
 import { PrefsProvider } from "@/context/PrefsContext";
 import { profile } from "@/data/profile";
@@ -25,15 +24,15 @@ export const metadata = {
 };
 
 export const viewport = {
-  themeColor: "#f1e8d2",
+  themeColor: "#0e1114",
 };
 
-// Aplica el tema guardado (o el del sistema) antes de pintar, para evitar parpadeos
-const themeInit = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){}})()`;
+// Aplica el tema guardado antes de pintar para evitar parpadeos. Por defecto: oscuro.
+const themeInit = `(function(){try{document.documentElement.dataset.theme=localStorage.getItem('theme')||'dark'}catch(e){}})()`;
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="es" data-theme="light" suppressHydrationWarning>
+    <html lang="es" data-theme="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

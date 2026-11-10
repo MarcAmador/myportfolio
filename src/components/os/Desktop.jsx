@@ -83,7 +83,6 @@ function Shell() {
                   key={win.key}
                   win={win}
                   title={proj ? proj.title : ui(meta.labelKey)}
-                  color={proj ? proj.color : meta.color}
                   constraintsRef={layerRef}
                 >
                   <AppBody win={win} />

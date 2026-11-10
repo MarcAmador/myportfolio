@@ -2,15 +2,14 @@
  * PROYECTOS (contenido de ejemplo — reemplázalo por los tuyos)
  *
  * kind:  "web" | "java" | "android" | "python"   → se usa para los filtros
- * demo:  "pixel" | "java" | "android" | null     → abre la demo interactiva
- * color: orange | blue | green | yellow | pink   → color de la portada
+ * demo:  "java" | "android" | null     → abre la demo interactiva
  */
 
 export const KINDS = {
-  web: { es: "Web", en: "Web", color: "orange" },
-  java: { es: "Java", en: "Java", color: "blue" },
-  android: { es: "Android", en: "Android", color: "green" },
-  python: { es: "Python", en: "Python", color: "yellow" },
+  web: { es: "Web", en: "Web" },
+  java: { es: "Java", en: "Java" },
+  android: { es: "Android", en: "Android" },
+  python: { es: "Python", en: "Python" },
 };
 
 export const projects = [
@@ -19,7 +18,6 @@ export const projects = [
     title: "Mercadito",
     year: 2025,
     kind: "web",
-    color: "orange",
     demo: null,
     stack: ["JavaScript", "React", "Express", "MongoDB", "Stripe"],
     summary: {
@@ -41,12 +39,11 @@ export const projects = [
     title: "Pixel Forge",
     year: 2025,
     kind: "web",
-    color: "pink",
-    demo: "pixel",
+    demo: null,
     stack: ["JavaScript", "React", "Canvas"],
     summary: {
-      es: "Editor de pixel art en el navegador. ¡Pruébalo en Demos!",
-      en: "Pixel art editor in the browser. Try it in Demos!",
+      es: "Editor de pixel art en el navegador, con paleta, relleno y exportación a PNG.",
+      en: "Pixel art editor in the browser, with palette, fill and PNG export.",
     },
     description: {
       es: "Editor de pixel art con paleta, borrador, relleno y exportación a PNG. Todo corre en el cliente sin dependencias de dibujo: solo React y un canvas.",
@@ -63,7 +60,6 @@ export const projects = [
     title: "TurnoYa",
     year: 2024,
     kind: "web",
-    color: "blue",
     demo: null,
     stack: ["Next.js", "Node", "PostgreSQL", "Tailwind"],
     summary: {
@@ -85,7 +81,6 @@ export const projects = [
     title: "Biblioteca Central",
     year: 2023,
     kind: "java",
-    color: "blue",
     demo: "java",
     stack: ["Java 21", "SQLite", "JUnit", "Maven"],
     summary: {
@@ -107,7 +102,6 @@ export const projects = [
     title: "Dungeon Swing",
     year: 2022,
     kind: "java",
-    color: "yellow",
     demo: null,
     stack: ["Java", "Swing", "Java 2D"],
     summary: {
@@ -129,7 +123,6 @@ export const projects = [
     title: "HabitNest",
     year: 2025,
     kind: "android",
-    color: "green",
     demo: "android",
     stack: ["Kotlin", "Jetpack Compose", "Room", "Hilt"],
     summary: {
@@ -151,7 +144,6 @@ export const projects = [
     title: "Clima Local",
     year: 2023,
     kind: "android",
-    color: "orange",
     demo: null,
     stack: ["Java", "Android SDK", "Retrofit", "OpenWeather"],
     summary: {
@@ -173,7 +165,6 @@ export const projects = [
     title: "DataLens",
     year: 2024,
     kind: "python",
-    color: "yellow",
     demo: null,
     stack: ["Python", "Pandas", "BeautifulSoup", "Matplotlib"],
     summary: {
