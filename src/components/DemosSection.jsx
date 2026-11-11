@@ -49,17 +49,18 @@ export default function DemosSection({ selectedTab, onTabChange }) {
     <section id="demos" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)]">
       {/* Header */}
       <div className="mb-12">
-        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-[var(--accent-amber)] uppercase tracking-wider">
-          <Cpu size={14} />
-          <span>Software en Ejecución</span>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="folded-ribbon folded-ribbon-amber text-[10px] rounded-sm">
+            SOFTWARE EN EJECUCIÓN
+          </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
-          {lang === "es" ? "Laboratorio Interactivo" : "Interactive Software Lab"}
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
+          {lang === "es" ? "Laboratorio de Software en Vivo" : "Live Software Lab"}
         </h2>
         <p className="text-[var(--text-muted)] max-w-2xl text-base leading-relaxed">
           {lang === "es"
-            ? "Interactúa con software real ejecutándose en vivo en tu navegador: terminal de consola en Java 21, réplica funcional de una app nativa Android y simulador de telemetría en React 19."
-            : "Interact with functional software directly in your browser: a Java 21 terminal with clean service layers, a native Android habit tracker, and a real-time React 19 telemetry sandbox."}
+            ? "Prueba aplicaciones reales corriendo directamente en tu navegador: la terminal de servicios en Java 21, el simulador nativo de Android y el laboratorio de telemetría en React 19."
+            : "Interact with functional software directly in your browser: the Java 21 service terminal, the native Android habit tracker, and the React 19 telemetry sandbox."}
         </p>
 
         {/* Studio Environment Switcher with Framer Motion slide */}

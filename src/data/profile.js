@@ -13,33 +13,33 @@ export const profile = {
   location: { es: "Remoto · Disponible a nivel global", en: "Remote · Worldwide" },
   photo: "/avatar.jpg",
   role: {
-    es: "Ingeniero de Software y Creador Digital",
-    en: "Software Engineer & Product Builder",
+    es: "Desarrollador de Software",
+    en: "Software Developer",
   },
   tagline: {
-    es: "Diseño y construyo experiencias web de alto rendimiento, arquitecturas en Java y aplicaciones móviles.",
-    en: "I design and build high-performance web applications, Java architectures, and mobile apps.",
+    es: "Creo aplicaciones web con React y Next.js, servicios backend en Java y apps móviles en Android.",
+    en: "I build web applications with React & Next.js, backend services in Java, and mobile apps in Android.",
   },
   availability: {
-    es: "Disponible para proyectos y retos técnicos",
-    en: "Available for new projects & challenges",
+    es: "Disponible para proyectos y empleo",
+    en: "Open to projects & full-time roles",
   },
   bio: {
     es: [
-      "Desarrollador enfocado en crear software que no solo funcione a la perfección, sino que se sienta ágil, intuitivo y estéticamente cuidado.",
-      "Mi especialidad abarca desde interfaces dinámicas con React y Next.js hasta servicios empresariales con Java y Spring Boot, pasando por aplicaciones nativas en Android.",
-      "Creo firmemente en la arquitectura limpia, las pruebas automatizadas y en escribir código legible que perdure en el tiempo.",
+      "Hola, soy Marc. Desarrollador de software enfocado en crear herramientas prácticas que resuelvan problemas reales y que la gente disfrute usar.",
+      "Mi trabajo abarca tres áreas principales: interfaces interactivas en la web con React y Next.js, lógica y servicios backend en Java, y aplicaciones móviles nativas para Android con Kotlin.",
+      "Me gusta el código limpio, bien probado y fácil de entender. Prefiero soluciones directas y bien diseñadas antes que complejidad innecesaria.",
     ],
     en: [
-      "Software developer focused on building systems that don't just work flawlessly, but feel responsive, tactile, and thoughtfully crafted.",
-      "My core strengths range from dynamic React & Next.js interfaces to enterprise-grade Java/Spring backends and native Android applications.",
-      "I believe in clean architecture, automated testing, and writing clear, maintainable code built to last.",
+      "Hi, I'm Marc. A software developer focused on building practical applications that solve real problems and feel great to use.",
+      "My core work centers on three fronts: interactive web UIs with React and Next.js, solid backend services in Java, and native Android mobile apps with Kotlin.",
+      "I prioritize clean, well-tested code that's easy to read and maintain over unnecessary complexity.",
     ],
   },
   facts: [
-    { k: { es: "Años creando software", en: "Years building software" }, v: "4+" },
-    { k: { es: "Proyectos y arquitecturas", en: "Shipped architectures" }, v: "15+" },
-    { k: { es: "Demos interactivas", en: "Live interactive demos" }, v: "3" },
+    { k: { es: "Enfoque", en: "Core focus" }, v: "Web · Java · Móvil" },
+    { k: { es: "Demos en vivo", en: "Live demos" }, v: "3 interactivas" },
+    { k: { es: "Tecnologías", en: "Primary stack" }, v: "React · Java 21 · Kotlin" },
   ],
   socials: [
     { label: "GitHub", url: "https://github.com/MarcAmador" },

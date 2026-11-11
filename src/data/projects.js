@@ -1,15 +1,12 @@
 /**
- * PROYECTOS (contenido de ejemplo — reemplázalo por los tuyos)
- *
- * kind:  "web" | "java" | "android" | "python"   → se usa para los filtros
- * demo:  "java" | "android" | null     → abre la demo interactiva
+ * PROYECTOS PRINCIPALES DE MARC AMADOR
+ * Tres proyectos sólidos y reales que cubren Web, Java y Android.
  */
 
 export const KINDS = {
-  web: { es: "Web", en: "Web" },
-  java: { es: "Java", en: "Java" },
-  android: { es: "Android", en: "Android" },
-  python: { es: "Python", en: "Python" },
+  web: { es: "Web y Full Stack", en: "Web & Full Stack" },
+  java: { es: "Java y Backend", en: "Java & Backend" },
+  android: { es: "Android Nativo", en: "Native Android" },
 };
 
 export const projects = [
@@ -19,104 +16,57 @@ export const projects = [
     year: 2025,
     kind: "web",
     demo: null,
-    stack: ["JavaScript", "React", "Express", "MongoDB", "Stripe"],
+    stack: ["React 19", "Next.js", "Express", "MongoDB", "Stripe"],
     summary: {
-      es: "Marketplace para productores locales con pagos y panel de vendedores.",
-      en: "Marketplace for local producers with payments and a seller dashboard.",
+      es: "Tienda en línea completa: catálogo de productos, carrito persistente en el navegador y pagos procesados con Stripe.",
+      en: "Full e-commerce shop: product catalog, browser-persistent cart, and Stripe payment processing.",
     },
     description: {
-      es: "Una tienda en línea donde pequeños productores publican sus artículos y cobran sin intermediarios. Incluye carrito persistente, pagos con Stripe, panel de ventas en tiempo real y búsqueda con filtros.",
-      en: "An online shop where small producers list items and get paid with no middlemen. Includes persistent cart, Stripe payments, a real-time sales dashboard and filtered search.",
+      es: "Plataforma de comercio electrónico pensada para pequeños comercios locales. Permite navegar productos con filtros rápidos, agregar al carrito con persistencia local y completar compras reales mediante Stripe Checkout. El backend está construido en Express con autenticación segura y base de datos en MongoDB.",
+      en: "E-commerce platform designed for local shops. Features instant category filtering, persistent cart state, and real payment checkout with Stripe. The backend is built with Express, JWT authentication, and MongoDB.",
     },
     highlights: {
-      es: ["120 vendedores activos en el primer trimestre", "API REST con Express y autenticación JWT", "Carga inicial de 1.1 s en 4G gracias a división de código"],
-      en: ["120 active sellers in the first quarter", "REST API with Express and JWT auth", "1.1 s first load on 4G thanks to code splitting"],
+      es: [
+        "Pasarela de pagos funcional integrada con webhooks de Stripe",
+        "API REST en Node/Express con autenticación por tokens",
+        "Diseño responsivo y carga rápida sin recargar la página",
+      ],
+      en: [
+        "Functional payment gateway integrated with Stripe webhooks",
+        "REST API in Node/Express with token authentication",
+        "Responsive design and fast transitions without full page reloads",
+      ],
     },
-    links: { repo: "https://github.com/", live: "https://example.com" },
-  },
-  {
-    slug: "pixel-forge",
-    title: "Pixel Forge",
-    year: 2025,
-    kind: "web",
-    demo: null,
-    stack: ["JavaScript", "React", "Canvas"],
-    summary: {
-      es: "Editor de pixel art en el navegador, con paleta, relleno y exportación a PNG.",
-      en: "Pixel art editor in the browser, with palette, fill and PNG export.",
-    },
-    description: {
-      es: "Editor de pixel art con paleta, borrador, relleno y exportación a PNG. Todo corre en el cliente sin dependencias de dibujo: solo React y un canvas.",
-      en: "Pixel art editor with palette, eraser, fill and PNG export. It all runs on the client with no drawing libraries: just React and a canvas.",
-    },
-    highlights: {
-      es: ["Deshacer ilimitado con pila de estados", "Exporta PNG a cualquier escala", "Funciona con táctil y ratón"],
-      en: ["Unlimited undo with a state stack", "Exports PNG at any scale", "Works with touch and mouse"],
-    },
-    links: { repo: "https://github.com/", live: "https://example.com" },
-  },
-  {
-    slug: "turnoya",
-    title: "TurnoYa",
-    year: 2024,
-    kind: "web",
-    demo: null,
-    stack: ["Next.js", "Node", "PostgreSQL", "Tailwind"],
-    summary: {
-      es: "Sistema de citas para clínicas, con recordatorios automáticos.",
-      en: "Appointment system for clinics, with automatic reminders.",
-    },
-    description: {
-      es: "Plataforma de reservas para clínicas pequeñas. Los pacientes agendan en 3 toques, y el sistema envía recordatorios por correo y WhatsApp. Reduje las citas perdidas un 38%.",
-      en: "Booking platform for small clinics. Patients book in 3 taps and the system sends email and WhatsApp reminders. Missed appointments dropped 38%.",
-    },
-    highlights: {
-      es: ["Calendario con disponibilidad por doctor", "Recordatorios programados con cron", "Panel administrativo con exportación a CSV"],
-      en: ["Per-doctor availability calendar", "Scheduled reminders via cron", "Admin dashboard with CSV export"],
-    },
-    links: { repo: "https://github.com/", live: "https://example.com" },
+    links: { repo: "https://github.com/MarcAmador", live: "https://example.com" },
   },
   {
     slug: "biblioteca-central",
     title: "Biblioteca Central",
-    year: 2023,
+    year: 2024,
     kind: "java",
     demo: "java",
-    stack: ["Java 21", "SQLite", "JUnit", "Maven"],
+    stack: ["Java 21", "SQLite", "JUnit 5", "Maven"],
     summary: {
-      es: "Gestor de biblioteca por consola con préstamos y multas.",
-      en: "Console library manager with loans and fines.",
+      es: "Sistema de gestión y préstamos por consola en Java 21. Incluye cálculo de multas, persistencia en SQLite y pruebas unitarias.",
+      en: "Console library and loan manager in Java 21 with automatic fines, SQLite storage, and unit tests.",
     },
     description: {
-      es: "Aplicación de consola para administrar libros, socios y préstamos. Arquitectura por capas (modelo, repositorio, servicio) con persistencia en SQLite y cobertura de pruebas del 85%.",
-      en: "Console app to manage books, members and loans. Layered architecture (model, repository, service) with SQLite persistence and 85% test coverage.",
+      es: "Aplicación de escritorio y consola orientada a administrar inventarios de libros, registros de socios y control de devoluciones. Aplica arquitectura limpia por capas (Modelo, Repositorio y Servicio) con persistencia en SQLite mediante JDBC y una batería de pruebas automatizadas con JUnit 5.",
+      en: "Console application to manage book catalogs, member registrations, and loan tracking. Follows a clean layered architecture (Model, Repository, Service) with SQLite persistence via JDBC and automated JUnit 5 test coverage.",
     },
     highlights: {
-      es: ["Patrón repositorio y principios SOLID", "85% de cobertura con JUnit 5", "Cálculo automático de multas por retraso"],
-      en: ["Repository pattern and SOLID principles", "85% coverage with JUnit 5", "Automatic late-fee calculation"],
+      es: [
+        "Separación clara de responsabilidades y principios SOLID",
+        "Pruebas unitarias con JUnit 5 para validar reglas de negocio",
+        "Cálculo automático de días de vencimiento y recargos por demora",
+      ],
+      en: [
+        "Clean separation of concerns adhering to SOLID principles",
+        "Unit tests with JUnit 5 covering business rules",
+        "Automatic due date tracking and late fee calculation",
+      ],
     },
-    links: { repo: "https://github.com/" },
-  },
-  {
-    slug: "dungeon-swing",
-    title: "Dungeon Swing",
-    year: 2022,
-    kind: "java",
-    demo: null,
-    stack: ["Java", "Swing", "Java 2D"],
-    summary: {
-      es: "Videojuego roguelike de escritorio hecho con Swing puro.",
-      en: "Desktop roguelike game made with plain Swing.",
-    },
-    description: {
-      es: "Un roguelike por turnos con mazmorras generadas proceduralmente, inventario y enemigos con IA simple. Hecho sin motores, solo Java 2D y mucho cariño.",
-      en: "A turn-based roguelike with procedurally generated dungeons, inventory and simple-AI enemies. No engines, just Java 2D and lots of love.",
-    },
-    highlights: {
-      es: ["Generación procedural con BSP", "Búsqueda A* para los enemigos", "Distribuido como .jar ejecutable"],
-      en: ["BSP procedural generation", "A* pathfinding for enemies", "Shipped as an executable .jar"],
-    },
-    links: { repo: "https://github.com/" },
+    links: { repo: "https://github.com/MarcAmador" },
   },
   {
     slug: "habitnest",
@@ -124,62 +74,28 @@ export const projects = [
     year: 2025,
     kind: "android",
     demo: "android",
-    stack: ["Kotlin", "Jetpack Compose", "Room", "Hilt"],
+    stack: ["Kotlin", "Jetpack Compose", "Room DB", "MVVM"],
     summary: {
-      es: "App de hábitos con rachas y recordatorios. Prueba la réplica.",
-      en: "Habit tracker with streaks and reminders. Try the replica.",
+      es: "App nativa de Android para registrar hábitos diarios y rachas. Funciona 100% sin conexión con base de datos Room.",
+      en: "Native Android habit tracker with streaks. Works 100% offline with on-device Room database.",
     },
     description: {
-      es: "App Android nativa para construir hábitos. Rachas, estadísticas semanales y recordatorios inteligentes. Todo guardado en el dispositivo con Room, interfaz 100% Jetpack Compose y soporte para tema oscuro.",
-      en: "Native Android app for building habits. Streaks, weekly stats and smart reminders. Stored on-device with Room, 100% Jetpack Compose UI and dark theme support.",
+      es: "Aplicación móvil desarrollada desde cero con Kotlin y Jetpack Compose. Diseñada para registrar metas diarias con un solo toque, visualizar el progreso semanal y mantener al usuario motivado mediante contadores de rachas. No requiere conexión a internet: todos los datos se guardan de forma local y segura en el dispositivo con Room.",
+      en: "Native mobile app built from scratch using Kotlin and Jetpack Compose. Designed to track daily habits with one tap, visualize weekly progress, and keep streaks alive. Fully offline-first with local Room database persistence.",
     },
     highlights: {
-      es: ["Arquitectura MVVM con Hilt", "Widgets de pantalla de inicio", "Más de 5,000 descargas en Play Store"],
-      en: ["MVVM architecture with Hilt", "Home screen widgets", "5,000+ downloads on Play Store"],
+      es: [
+        "Interfaz declarativa fluida con animaciones nativas en Compose",
+        "Arquitectura MVVM con StateFlow para reactividad sin bloqueos",
+        "Almacenamiento local rápido con Room y SQLite",
+      ],
+      en: [
+        "Fluid declarative UI with native Compose micro-animations",
+        "Clean MVVM architecture with StateFlow for non-blocking UI",
+        "Fast local persistence with Room and SQLite",
+      ],
     },
-    links: { repo: "https://github.com/", apk: "https://example.com/habitnest.apk" },
-  },
-  {
-    slug: "clima-local",
-    title: "Clima Local",
-    year: 2023,
-    kind: "android",
-    demo: null,
-    stack: ["Java", "Android SDK", "Retrofit", "OpenWeather"],
-    summary: {
-      es: "Clima por geolocalización con widget y modo sin conexión.",
-      en: "Geolocated weather with widget and offline mode.",
-    },
-    description: {
-      es: "Mi primera app publicada. Muestra el clima actual y el pronóstico a 5 días según tu ubicación, con caché local para funcionar sin conexión.",
-      en: "My first published app. Shows current weather and a 5-day forecast based on your location, with local cache to work offline.",
-    },
-    highlights: {
-      es: ["Consumo de API REST con Retrofit", "Caché con SQLite", "Widget de 2x2 en pantalla de inicio"],
-      en: ["REST API consumption with Retrofit", "SQLite caching", "2x2 home screen widget"],
-    },
-    links: { repo: "https://github.com/", apk: "https://example.com/clima.apk" },
-  },
-  {
-    slug: "datalens",
-    title: "DataLens",
-    year: 2024,
-    kind: "python",
-    demo: null,
-    stack: ["Python", "Pandas", "BeautifulSoup", "Matplotlib"],
-    summary: {
-      es: "Scraper y análisis de precios de vivienda con reportes automáticos.",
-      en: "Housing price scraper and analysis with automatic reports.",
-    },
-    description: {
-      es: "Pipeline que recolecta anuncios de vivienda, limpia los datos, detecta oportunidades por zona y genera un reporte PDF semanal.",
-      en: "Pipeline that collects housing listings, cleans the data, spots opportunities by area and generates a weekly PDF report.",
-    },
-    highlights: {
-      es: ["Más de 80 mil anuncios procesados", "Detección de valores atípicos", "Reporte PDF programado"],
-      en: ["80k+ listings processed", "Outlier detection", "Scheduled PDF report"],
-    },
-    links: { repo: "https://github.com/" },
+    links: { repo: "https://github.com/MarcAmador" },
   },
 ];
 

@@ -14,17 +14,18 @@ export default function ExperienceSection() {
     <section id="experiencia" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)]">
       {/* Header */}
       <div className="mb-14">
-        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-[var(--accent-purple)] uppercase tracking-wider">
-          <Calendar size={14} />
-          <span>Trayectoria y Evolución</span>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="folded-ribbon folded-ribbon-cyan text-[10px] rounded-sm">
+            HISTORIAL PROFESIONAL
+          </span>
         </div>
-        <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
+        <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
           {lang === "es" ? "Experiencia y Formación" : "Experience & Education"}
         </h2>
         <p className="text-[var(--text-muted)] max-w-2xl text-base leading-relaxed">
           {lang === "es"
-            ? "Mi recorrido profesional construyendo productos de software para miles de usuarios, liderando iniciativas técnicas y fortaleciendo mis fundamentos de ingeniería."
-            : "My professional path building software products for thousands of users, leading technical projects, and solidifying engineering foundations."}
+            ? "Trayectoria práctica desarrollando software: plataformas web con miles de usuarios, aplicaciones móviles en producción y servicios backend en Java."
+            : "Practical journey building software: web platforms with thousands of users, native mobile apps, and Java backends."}
         </p>
       </div>
 

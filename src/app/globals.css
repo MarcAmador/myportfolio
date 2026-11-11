@@ -176,8 +176,118 @@ body {
   letter-spacing: 0.05em;
 }
 
+/* ── Figuras Geométricas, Cintas con Pliegues y Patrones (Inspiración Bento Modular) ── */
+.bg-dot-pattern {
+  background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+.bg-dot-pattern-amber {
+  background-image: radial-gradient(rgba(251, 191, 36, 0.15) 1.2px, transparent 1.2px);
+  background-size: 18px 18px;
+}
+
+/* Cinta con efecto de pliegue tridimensional (Folded Ribbon) */
+.folded-ribbon {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.folded-ribbon:hover {
+  transform: translateY(-2px);
+}
+
+.folded-ribbon-cyan {
+  background: var(--accent-cyan);
+  color: #090d16;
+}
+
+.folded-ribbon-amber {
+  background: var(--accent-amber);
+  color: #090d16;
+}
+
+.folded-ribbon-white {
+  background: #ffffff;
+  color: #090d16;
+}
+
+/* Esquinas asimétricas estilo Bento orgánico */
+.bento-asymmetric-1 {
+  border-top-left-radius: 28px;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 28px;
+  border-bottom-left-radius: 14px;
+}
+
+.bento-asymmetric-2 {
+  border-top-left-radius: 14px;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 14px;
+  border-bottom-left-radius: 28px;
+}
+
+.bento-border-glow-cyan {
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 0 24px -6px rgba(56, 189, 248, 0.2);
+}
+
+.bento-border-glow-amber {
+  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  box-shadow: 0 0 24px -6px rgba(251, 191, 36, 0.2);
+}
+
+/* ── Optimización Profesional para Impresión de CV (A4 / Carta) ── */
+@page {
+  size: A4 portrait;
+  margin: 10mm 14mm;
+}
+
 @media print {
   .no-print {
     display: none !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    background-image: none !important;
+    color: #111827 !important;
+    font-size: 10.5pt !important;
+    line-height: 1.45 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-page {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  .break-inside-avoid {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  a {
+    color: #111827 !important;
+    text-decoration: none !important;
   }
 }
