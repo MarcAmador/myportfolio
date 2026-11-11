@@ -21,26 +21,26 @@ export default function ProjectsSection({ onSelectDemo }) {
   return (
     <section id="proyectos" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)] relative">
       {/* Fondo de matriz de puntos sutil */}
-      <div className="absolute inset-0 bg-dot-pattern opacity-30 pointer-events-none -z-10" />
+      <div className="absolute inset-0 dot-matrix-cyan opacity-15 pointer-events-none -z-10" />
 
       {/* Cabecera de la Sección */}
       <div className="mb-14">
         <div className="flex items-center gap-3 mb-3">
-          <span className="folded-ribbon folded-ribbon-cyan text-[11px] rounded-sm">
-            PROYECTOS DESTACADOS
+          <span className="origami-ribbon origami-ribbon-cyan text-[11px]">
+            PROYECTOS SELECCIONADOS
           </span>
           <span className="font-mono text-xs text-[var(--text-dim)]">
-            {projects.length} {lang === "es" ? "proyectos principales" : "core projects"}
+            {projects.length} {lang === "es" ? "desarrollos principales" : "core systems"}
           </span>
         </div>
 
         <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
-          {lang === "es" ? "Software Real y Código en Producción" : "Real Software & Production Code"}
+          {lang === "es" ? "Software Construido y Probado" : "Built & Tested Software"}
         </h2>
         <p className="text-[var(--text-muted)] max-w-2xl text-base leading-relaxed">
           {lang === "es"
-            ? "Tres proyectos que resumen mis áreas de trabajo: una plataforma web completa de comercio, un sistema de gestión por consola en Java 21 y una aplicación móvil nativa para Android."
-            : "Three core projects representing my work: a complete web commerce app, a Java 21 console system, and a native Android mobile application."}
+            ? "Tres implementaciones completas en mis áreas principales: comercio web full-stack, servicios de gestión en Java y aplicación nativa para Android."
+            : "Three complete implementations across my core disciplines: full-stack web commerce, Java service logic, and a native Android application."}
         </p>
       </div>
 
@@ -50,14 +50,14 @@ export default function ProjectsSection({ onSelectDemo }) {
         {projects[0] && (
           <article
             id={`project-${projects[0].slug}`}
-            className="lg:col-span-7 rounded-3xl glass-panel-elevated bento-asymmetric-1 border-2 border-sky-400/40 p-6 sm:p-8 flex flex-col justify-between shadow-2xl hover:border-sky-400 transition-all group relative overflow-hidden"
+            className="lg:col-span-7 rounded-3xl glass-panel-elevated bento-puzzle-l border-2 border-sky-400/50 p-6 sm:p-8 flex flex-col justify-between shadow-2xl hover:border-sky-400 transition-all group relative overflow-hidden"
           >
-            {/* Cinta superior plegada */}
+            {/* Cinta superior plegada sin slashes */}
             <div className="flex items-center justify-between mb-4">
-              <span className="folded-ribbon folded-ribbon-cyan text-[10px] rounded-sm">
-                WEB // REACT 19 & NEXT.JS
+              <span className="origami-ribbon origami-ribbon-cyan text-[10px]">
+                WEB FULL-STACK ✦ REACT 19
               </span>
-              <span className="font-mono text-xs text-[var(--text-dim)]">{projects[0].year}</span>
+              <span className="font-mono text-xs text-[var(--accent-cyan)] font-bold">{projects[0].year}</span>
             </div>
 
             {/* Visual Cover con marco */}
@@ -113,7 +113,7 @@ export default function ProjectsSection({ onSelectDemo }) {
                 href={`/projects/${projects[0].slug}`}
                 className="inline-flex items-center gap-1 text-[var(--accent-cyan)] font-bold hover:underline"
               >
-                <span>Detalles del proyecto</span>
+                <span>Detalles técnicos</span>
                 <ArrowRight size={13} />
               </Link>
             </div>
@@ -126,17 +126,17 @@ export default function ProjectsSection({ onSelectDemo }) {
           {projects[1] && (
             <article
               id={`project-${projects[1].slug}`}
-              className="flex-1 rounded-3xl glass-panel-elevated bento-asymmetric-2 border-2 border-amber-400/40 p-6 flex flex-col justify-between shadow-2xl hover:border-amber-400 transition-all group relative overflow-hidden"
+              className="flex-1 rounded-3xl glass-panel-elevated bento-puzzle-notch border-2 border-amber-400/50 p-6 flex flex-col justify-between shadow-2xl hover:border-amber-400 transition-all group relative overflow-hidden"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="folded-ribbon folded-ribbon-amber text-[10px] rounded-sm">
-                    JAVA 21 // CONSOLA
+                  <span className="origami-ribbon origami-ribbon-amber text-[10px]">
+                    SISTEMA CORE ✦ JAVA 21
                   </span>
                   {/* Botón directo para lanzar demo de terminal */}
                   <button
                     onClick={() => handleLaunchDemo("java")}
-                    className="folded-ribbon folded-ribbon-white text-[10px] rounded-sm flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform"
+                    className="origami-ribbon origami-ribbon-white text-[10px] flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform"
                     title="Probar en el navegador"
                   >
                     <Play size={10} className="fill-[#090d16]" />
@@ -189,17 +189,17 @@ export default function ProjectsSection({ onSelectDemo }) {
           {projects[2] && (
             <article
               id={`project-${projects[2].slug}`}
-              className="flex-1 rounded-3xl glass-panel-elevated bento-asymmetric-1 border-2 border-white/40 p-6 flex flex-col justify-between shadow-2xl hover:border-white transition-all group relative overflow-hidden"
+              className="flex-1 rounded-3xl glass-panel-elevated bento-puzzle-r border-2 border-white/50 p-6 flex flex-col justify-between shadow-2xl hover:border-white transition-all group relative overflow-hidden"
             >
               <div>
                 <div className="flex items-center justify-between mb-3">
-                  <span className="folded-ribbon folded-ribbon-white text-[10px] rounded-sm">
-                    ANDROID // KOTLIN
+                  <span className="origami-ribbon origami-ribbon-white text-[10px]">
+                    APP NATIVA ✦ KOTLIN
                   </span>
                   {/* Botón directo para lanzar demo del teléfono */}
                   <button
                     onClick={() => handleLaunchDemo("android")}
-                    className="folded-ribbon folded-ribbon-cyan text-[10px] rounded-sm flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform"
+                    className="origami-ribbon origami-ribbon-cyan text-[10px] flex items-center gap-1.5 cursor-pointer hover:scale-105 transition-transform"
                     title="Probar simulador de teléfono"
                   >
                     <Smartphone size={11} />

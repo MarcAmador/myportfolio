@@ -176,75 +176,135 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* ── Figuras Geométricas, Cintas con Pliegues y Patrones (Inspiración Bento Modular) ── */
+/* ── Figuras Geométricas, Cintas con Pliegues Origami y Patrones (Inspiración Bento Modular) ── */
 .bg-dot-pattern {
-  background-image: radial-gradient(rgba(56, 189, 248, 0.15) 1.2px, transparent 1.2px);
-  background-size: 18px 18px;
+  background-image: radial-gradient(rgba(56, 189, 248, 0.20) 1.3px, transparent 1.3px);
+  background-size: 16px 16px;
 }
 
 .bg-dot-pattern-amber {
-  background-image: radial-gradient(rgba(251, 191, 36, 0.15) 1.2px, transparent 1.2px);
-  background-size: 18px 18px;
+  background-image: radial-gradient(rgba(251, 191, 36, 0.20) 1.3px, transparent 1.3px);
+  background-size: 16px 16px;
 }
 
-/* Cinta con efecto de pliegue tridimensional (Folded Ribbon) */
-.folded-ribbon {
+.dot-matrix-cyan {
+  background-image: radial-gradient(#38bdf8 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+}
+
+.dot-matrix-amber {
+  background-image: radial-gradient(#fbbf24 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+}
+
+.dot-matrix-white {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.22) 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+}
+
+/* Cintas con efecto de pliegue tridimensional (Origami Folded Ribbons) */
+.folded-ribbon,
+.origami-ribbon {
   position: relative;
   display: inline-flex;
   align-items: center;
   gap: 6px;
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 4px 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35), 0 1px 2px rgba(0, 0, 0, 0.2);
+  padding: 5px 13px;
+  border-radius: 4px;
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.45), 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.folded-ribbon:hover {
+.folded-ribbon:hover,
+.origami-ribbon:hover {
   transform: translateY(-2px);
 }
 
-.folded-ribbon-cyan {
+.folded-ribbon-cyan,
+.origami-ribbon-cyan {
   background: var(--accent-cyan);
   color: #090d16;
 }
 
-.folded-ribbon-amber {
+.folded-ribbon-amber,
+.origami-ribbon-amber {
   background: var(--accent-amber);
   color: #090d16;
 }
 
-.folded-ribbon-white {
+.folded-ribbon-white,
+.origami-ribbon-white {
   background: #ffffff;
   color: #090d16;
 }
 
-/* Esquinas asimétricas estilo Bento orgánico */
+/* Banda diagonal de despacho aéreo (Airmail Strip) */
+.airmail-strip {
+  background: repeating-linear-gradient(
+    -45deg,
+    #38bdf8 0,
+    #38bdf8 14px,
+    #ffffff 14px,
+    #ffffff 28px,
+    #fbbf24 28px,
+    #fbbf24 42px,
+    #0f172a 42px,
+    #0f172a 56px
+  );
+  height: 6px;
+  width: 100%;
+}
+
+/* Estampilla postal interactiva con borde perforado */
+.postal-stamp {
+  position: relative;
+  background: #0f172a;
+  border: 2px dashed #fbbf24;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  padding: 10px 14px;
+}
+
+/* Esquinas asimétricas estilo Bento orgánico y rompecabezas */
 .bento-asymmetric-1 {
-  border-top-left-radius: 28px;
+  border-top-left-radius: 32px;
   border-top-right-radius: 14px;
-  border-bottom-right-radius: 28px;
+  border-bottom-right-radius: 32px;
   border-bottom-left-radius: 14px;
 }
 
 .bento-asymmetric-2 {
   border-top-left-radius: 14px;
-  border-top-right-radius: 28px;
+  border-top-right-radius: 32px;
   border-bottom-right-radius: 14px;
-  border-bottom-left-radius: 28px;
+  border-bottom-left-radius: 32px;
+}
+
+.bento-puzzle-l {
+  border-radius: 34px 12px 34px 34px;
+}
+
+.bento-puzzle-r {
+  border-radius: 12px 34px 34px 34px;
+}
+
+.bento-puzzle-notch {
+  border-radius: 36px 12px 36px 12px;
 }
 
 .bento-border-glow-cyan {
-  border: 1.5px solid rgba(56, 189, 248, 0.35);
-  box-shadow: 0 0 24px -6px rgba(56, 189, 248, 0.2);
+  border: 2px solid rgba(56, 189, 248, 0.45);
+  box-shadow: 0 0 24px -4px rgba(56, 189, 248, 0.25);
 }
 
 .bento-border-glow-amber {
-  border: 1.5px solid rgba(251, 191, 36, 0.35);
-  box-shadow: 0 0 24px -6px rgba(251, 191, 36, 0.2);
+  border: 2px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 0 24px -4px rgba(251, 191, 36, 0.25);
 }
 
 /* ── Optimización Profesional para Impresión de CV (A4 / Carta) ── */

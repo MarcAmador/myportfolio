@@ -15,7 +15,7 @@ export default function ExperienceSection() {
       {/* Header */}
       <div className="mb-14">
         <div className="flex items-center gap-2 mb-3">
-          <span className="folded-ribbon folded-ribbon-cyan text-[10px] rounded-sm">
+          <span className="origami-ribbon origami-ribbon-cyan text-[10px]">
             HISTORIAL PROFESIONAL
           </span>
         </div>

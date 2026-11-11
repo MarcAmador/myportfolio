@@ -9,10 +9,12 @@ export default function AboutSection() {
 
   return (
     <section id="sobre-mi" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)] relative">
+      <div className="absolute inset-0 dot-matrix-cyan opacity-10 pointer-events-none -z-10" />
+
       {/* Cabecera */}
       <div className="mb-14">
         <div className="flex items-center gap-2 mb-3">
-          <span className="folded-ribbon folded-ribbon-cyan text-[10px] rounded-sm">
+          <span className="origami-ribbon origami-ribbon-cyan text-[10px]">
             FILOSOFÍA DE TRABAJO
           </span>
         </div>
@@ -21,15 +23,15 @@ export default function AboutSection() {
         </h2>
         <p className="text-[var(--text-muted)] max-w-2xl text-base leading-relaxed">
           {lang === "es"
-            ? "Conoce los criterios que aplico al escribir código, diseñar interfaces y colaborar en proyectos de software."
-            : "The principles I apply when writing code, designing user flows, and collaborating on software projects."}
+            ? "Criterios claros que aplico al escribir código, diseñar interfaces y colaborar en proyectos de ingeniería."
+            : "The principles I apply when writing code, architecting backends, and collaborating on software projects."}
         </p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
         {/* Profile Card & Stats (5 cols) */}
         <div className="lg:col-span-5 space-y-6">
-          <div className="rounded-3xl glass-panel-elevated bento-asymmetric-1 border-2 border-sky-400/30 p-6 text-center hover-glow shadow-2xl relative overflow-hidden">
+          <div className="rounded-3xl glass-panel-elevated bento-puzzle-l border-2 border-sky-400/40 p-6 text-center hover-glow shadow-2xl relative overflow-hidden">
             <div className="relative w-32 h-32 mx-auto rounded-2xl overflow-hidden border-2 border-[var(--accent-cyan)] bg-[var(--bg-base)] mb-4 shadow-lg">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -66,10 +68,10 @@ export default function AboutSection() {
 
         {/* Narrative & Values (7 cols) */}
         <div className="lg:col-span-7 space-y-6">
-          <div className="p-7 sm:p-8 rounded-3xl glass-panel bento-asymmetric-2 border border-[var(--border-subtle)] space-y-4 shadow-xl">
+          <div className="p-7 sm:p-8 rounded-3xl glass-panel bento-puzzle-r border-2 border-amber-400/30 space-y-4 shadow-xl">
             <div className="flex items-center gap-2 mb-2">
-              <span className="folded-ribbon folded-ribbon-amber text-[10px] rounded-sm">
-                ENFOQUE PRÁCTICO
+              <span className="origami-ribbon origami-ribbon-amber text-[10px]">
+                ENFOQUE DIRECTO
               </span>
             </div>
 
@@ -87,7 +89,7 @@ export default function AboutSection() {
 
           {/* 2 Core Values Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="p-5 rounded-2xl glass-panel bento-asymmetric-1 border-l-4 border-l-[var(--accent-cyan)] border-[var(--border-subtle)] hover:border-sky-400 transition-colors">
+            <div className="p-5 rounded-2xl glass-panel bento-puzzle-notch border-l-4 border-l-[var(--accent-cyan)] border-[var(--border-subtle)] hover:border-sky-400 transition-colors">
               <span className="text-[var(--accent-cyan)] font-bold text-xs font-mono flex items-center gap-1.5 mb-2">
                 <Code2 size={15} /> CÓDIGO CLARO Y MANTENIBLE
               </span>
@@ -98,7 +100,7 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl glass-panel bento-asymmetric-2 border-l-4 border-l-[var(--accent-amber)] border-[var(--border-subtle)] hover:border-amber-400 transition-colors">
+            <div className="p-5 rounded-2xl glass-panel bento-puzzle-notch border-l-4 border-l-[var(--accent-amber)] border-[var(--border-subtle)] hover:border-amber-400 transition-colors">
               <span className="text-[var(--accent-amber)] font-bold text-xs font-mono flex items-center gap-1.5 mb-2">
                 <Sparkles size={15} /> RENDIMIENTO Y USABILIDAD
               </span>

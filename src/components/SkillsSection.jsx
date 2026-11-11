@@ -143,12 +143,15 @@ export default function SkillsSection() {
   const { lang } = usePrefs();
 
   return (
-    <section id="habilidades" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)]">
+    <section id="habilidades" className="py-24 px-4 sm:px-6 max-w-6xl mx-auto border-t border-[var(--border-subtle)] relative">
+      <div className="absolute inset-0 dot-matrix-cyan opacity-10 pointer-events-none -z-10" />
+
       {/* Header */}
       <div className="mb-14">
-        <div className="flex items-center gap-2 mb-2 font-mono text-xs text-[var(--accent-cyan)] uppercase tracking-wider">
-          <Cpu size={14} />
-          <span>Especialidades Técnicas</span>
+        <div className="flex items-center gap-2 mb-3">
+          <span className="origami-ribbon origami-ribbon-cyan text-[10px]">
+            ESPECIALIDADES TÉCNICAS
+          </span>
         </div>
         <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-[var(--text-main)] mb-4">
           {lang === "es" ? "Stack y Metodología" : "Skills & Engineering Stack"}

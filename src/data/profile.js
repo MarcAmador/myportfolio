@@ -17,8 +17,8 @@ export const profile = {
     en: "Software Developer",
   },
   tagline: {
-    es: "Creo aplicaciones web con React y Next.js, servicios backend en Java y apps móviles en Android.",
-    en: "I build web applications with React & Next.js, backend services in Java, and mobile apps in Android.",
+    es: "Construyo software veloz, interfaces claras y sistemas que no fallan.",
+    en: "Building fast software, clean interfaces, and resilient backend systems.",
   },
   availability: {
     es: "Disponible para proyectos y empleo",
@@ -26,20 +26,20 @@ export const profile = {
   },
   bio: {
     es: [
-      "Hola, soy Marc. Desarrollador de software enfocado en crear herramientas prácticas que resuelvan problemas reales y que la gente disfrute usar.",
-      "Mi trabajo abarca tres áreas principales: interfaces interactivas en la web con React y Next.js, lógica y servicios backend en Java, y aplicaciones móviles nativas para Android con Kotlin.",
-      "Me gusta el código limpio, bien probado y fácil de entender. Prefiero soluciones directas y bien diseñadas antes que complejidad innecesaria.",
+      "Hola, soy Marc Amador. Desarrollador de software enfocado en construir herramientas prácticas que la gente disfrute utilizar en el día a día.",
+      "Mi trabajo abarca desde la concepción de interfaces intuitivas y reactivas en la web, hasta el modelado de servicios backend robustos y aplicaciones móviles fluidas.",
+      "Priorizo el código legible, la arquitectura desacoplada y las pruebas automatizadas. Prefiero soluciones elegantes y directas antes que complejidad innecesaria.",
     ],
     en: [
-      "Hi, I'm Marc. A software developer focused on building practical applications that solve real problems and feel great to use.",
-      "My core work centers on three fronts: interactive web UIs with React and Next.js, solid backend services in Java, and native Android mobile apps with Kotlin.",
-      "I prioritize clean, well-tested code that's easy to read and maintain over unnecessary complexity.",
+      "Hi, I'm Marc Amador. A software developer focused on building practical, high-performance applications that people genuinely enjoy using.",
+      "My work spans intuitive web interfaces, reliable backend services, and native mobile apps designed for real-world usage.",
+      "I value clean architecture, automated testing, and thoughtful design over artificial complexity.",
     ],
   },
   facts: [
     { k: { es: "Enfoque", en: "Core focus" }, v: "Web · Java · Móvil" },
     { k: { es: "Demos en vivo", en: "Live demos" }, v: "3 interactivas" },
-    { k: { es: "Tecnologías", en: "Primary stack" }, v: "React · Java 21 · Kotlin" },
+    { k: { es: "Stack principal", en: "Primary stack" }, v: "React · Java 21 · Kotlin" },
   ],
   socials: [
     { label: "GitHub", url: "https://github.com/MarcAmador" },
